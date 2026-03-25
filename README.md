@@ -5,7 +5,7 @@
 ---
 
 ### 🚀 Live Demo
-*(Insert your Streamlit deployment link here once deployed!)*
+ https://customer-failure-detector.streamlit.app
 
 ### 🔍 Features
 - **Instant QA at Scale:** Capable of processing complex customer transcripts in seconds to identify pain points.
