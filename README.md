@@ -4,7 +4,7 @@
 
 ---
 
-### 🚀 Live Demo
+###  Live Demo
  https://customer-failure-detector.streamlit.app
 
 ### 🔍 Features
@@ -14,7 +14,7 @@
 - **Custom Native Dashboard UI:** Built with an elegant, completely custom styling aesthetic (unlike generic templates) utilizing dynamically rendered CSS SVGs and complex Flexbox layouts via native Python rendering mechanisms.
 - **Gemini Engine Integration:** Implements asynchronous logic and robust LLM generation fallback loops to guarantee valid, clean JSON payload outputs from models (`gemini-2.5-flash`, `gemini-1.5-pro`, etc.).
 
-### 💻 Technology Stack
+###  Technology Stack
 - **Frontend & App State:** Python 3, Streamlit
 - **AI Core Engine:** Google Generative AI (Gemini SDK)
 - **Data Engineering:** Pandas, JSON Processing
@@ -22,7 +22,7 @@
 
 ---
 
-### 🛠️ Local Development Setup
+###  Local Development Setup
 
 To run this application locally, you will need a Google Gemini API Key.
 
@@ -59,7 +59,7 @@ streamlit run app.py
 
 ---
 
-### 📈 Future Roadmap
+###  Future Roadmap
 - Integration with third-party ticketing platforms (Zendesk / Intercom API integrations).
 - Mass-bulk JSON upload parsing to evaluate hundreds of transcripts at a time.
 - Time-series graphing for CX Quality Score drift over time.
