@@ -19,7 +19,7 @@
 ### Input: Customer Support Transcript
 
 Support Ticket #12345
-Date: March 15, 2024
+Date: March 15, 2026
 Customer: Alex Johnson
 Agent: Olivia (Customer Support)
 
@@ -68,22 +68,165 @@ Alex: I'm going to post about this on social media. This is the worst customer s
 ---
 End of Transcript
 ### Output: Analysis Report
-```json
 {
-  "failure_points": [
-    "Agent didn't listen - customer already did all suggested troubleshooting",
-    "Unclear escalation - no case number or timeline provided",
-    "No follow-up - 30 minutes with zero communication"
+  "ticket_id": "12345",
+  "analysis_summary": {
+    "overall_satisfaction": "1/10",
+    "failure_severity": "CRITICAL",
+    "churn_risk": "EXTREME"
+  },
+  
+  "emotional_journey": [
+    {
+      "message_number": 1,
+      "customer_emotion": "frustrated",
+      "intensity": 5,
+      "reason": "Account locked, needs urgent access to billing"
+    },
+    {
+      "message_number": 3,
+      "customer_emotion": "disappointed",
+      "intensity": 6,
+      "reason": "Basic troubleshooting failed, agent suggests already-tried steps"
+    },
+    {
+      "message_number": 5,
+      "customer_emotion": "angry",
+      "intensity": 8,
+      "reason": "Asked to repeat troubleshooting already done, wasted 20 minutes"
+    },
+    {
+      "message_number": 7,
+      "customer_emotion": "abandoned",
+      "intensity": 9,
+      "reason": "Agent escalates without providing case number or timeline, goes offline"
+    },
+    {
+      "message_number": 9,
+      "customer_emotion": "extremely angry / hostile",
+      "intensity": 10,
+      "reason": "30 minutes with no follow-up, threatening to post on social media, considering cancellation"
+    }
   ],
-  "ideal_response": "I see you've already tried the standard troubleshooting. This needs our technical team. I'm creating Case #12345 - you'll hear back in 30 minutes max. I'm also sending you an email confirmation.",
-  "churn_risk": "EXTREME",
+  
+  "failure_points": [
+    {
+      "message_number": 3,
+      "failure_type": "Insufficient Troubleshooting",
+      "description": "Agent suggests password reset when customer already mentioned doing it",
+      "agent_action": "Did not read previous message properly",
+      "impact": "Wasted customer time, showed lack of attention"
+    },
+    {
+      "message_number": 5,
+      "failure_type": "Repeated Basic Troubleshooting",
+      "description": "Asked to clear cache after customer explicitly stated they already tried multiple browsers",
+      "agent_action": "Not listening to customer, suggesting generic solutions",
+      "impact": "Customer frustrated, felt unheard, question agent's competence"
+    },
+    {
+      "message_number": 7,
+      "failure_type": "Unclear Escalation",
+      "description": "Escalated to technical team but provided no case number, timeline, or contact method",
+      "agent_action": "Vague handoff with no follow-up plan",
+      "impact": "Customer doesn't know what happens next, no reassurance"
+    },
+    {
+      "message_number": 8,
+      "failure_type": "Disappearance Without Warning",
+      "description": "Agent went offline without providing any case number or expected resolution time",
+      "agent_action": "Abandoned customer mid-support interaction",
+      "impact": "Customer feels completely abandoned, thinks no one is helping"
+    },
+    {
+      "message_number": 9,
+      "failure_type": "No Follow-Up",
+      "description": "30 minutes passed with no technical team response or status update",
+      "agent_action": "Process failure - escalation didn't work, no backup communication",
+      "impact": "Customer threatens to post on social media, considering cancellation"
+    }
+  ],
+  
+  "root_cause_analysis": {
+    "primary_issue": "Process Breakdown - Escalation Protocol Missing",
+    "details": "When escalating, agent should have: (1) Provided case number, (2) Set expectation for response time, (3) Offered callback option, (4) Followed up within 15 minutes",
+    "secondary_issues": [
+      "Agent didn't listen to customer context",
+      "Generic troubleshooting not customized to customer's situation",
+      "No escalation tracking or follow-up process",
+      "No communication during wait time"
+    ]
+  },
+  
+  "ideal_responses": [
+    {
+      "point_in_conversation": "Message 3",
+      "what_agent_said": "Can you try resetting your password?",
+      "what_agent_should_have_said": "I see you've already reset your password twice - thanks for trying that. Let me check if there's something more specific happening with your account. This sounds like a backend authentication issue that might need our technical team.",
+      "why_better": "Shows customer is being listened to, acknowledges their effort, escalates to specialized team instead of repeating basic steps"
+    },
+    {
+      "point_in_conversation": "Message 5",
+      "what_agent_said": "Let me try another approach - can you try logging in incognito mode?",
+      "what_agent_should_have_said": "I completely understand your frustration - you've already tried multiple browsers and clearing cache. You've done our standard troubleshooting perfectly. This definitely needs our technical team to investigate your account directly. I'm escalating this as urgent right now.",
+      "why_better": "Validates customer's effort, shows competence, sets clear expectation for escalation"
+    },
+    {
+      "point_in_conversation": "Message 7 (Escalation)",
+      "what_agent_said": "They'll look into it and get back to you. Thanks for your patience.",
+      "what_agent_should_have_said": "I'm escalating this to our technical team as Case #12345. Here's what happens next: (1) They'll investigate your authentication issue, (2) You should expect a response within 30 minutes max, (3) I'm also sending you an email confirmation. If you don't hear from us in 30 minutes, you can reply directly to this ticket. Is there anything else I should note about your issue?",
+      "why_better": "Specific case number, clear timeline, multiple contact methods, empowers customer with options"
+    },
+    {
+      "point_in_conversation": "Message 8 (After 5 minutes)",
+      "what_agent_said": "[Goes offline without warning]",
+      "what_agent_should_have_said": "I'm going to stay with you while the technical team works on this. Let me check on status... [After 10 minutes] I'm checking with the tech team now on your escalation. You're case #12345 - they've received it and should reach out within 20 minutes. Hang tight.",
+      "why_better": "Shows you're still there for the customer, provides real-time updates, sets accurate expectations"
+    }
+  ],
+  
   "coaching_points": [
-    "Read what customer already tried before suggesting solutions",
-    "Provide case number and clear timeline when escalating",
-    "Follow up proactively - don't make them ask"
-  ]
+    "Read and acknowledge what the customer has already tried before suggesting solutions",
+    "Don't repeat basic troubleshooting if customer has already stated they tried it",
+    "When escalating, ALWAYS provide: case number, expected response time, and how customer will be contacted",
+    "Never go offline without telling customer you're escalating and when they'll hear back",
+    "Set expectations for escalation response time (15-30 minutes, not 'whenever')",
+    "Provide multiple contact methods - email backup, SMS notification, ticket reference number",
+    "Follow up proactively - don't make customer ask where their escalation is",
+    "Validate customer effort - acknowledge they've already tried troubleshooting"
+  ],
+  
+  "qa_score": {
+    "listening_score": "2/10",
+    "problem_solving_score": "3/10",
+    "communication_score": "1/10",
+    "escalation_process_score": "0/10",
+    "follow_up_score": "0/10",
+    "overall_agent_performance": "1/10"
+  },
+  
+  "churn_prediction": {
+    "churn_probability": "95%",
+    "reasons": [
+      "Customer threatened to post on social media",
+      "Mentioned canceling subscription",
+      "Felt abandoned by support",
+      "Legitimate technical issue not resolved"
+    ],
+    "recovery_actions_needed": [
+      "Manager should reach out immediately with apology",
+      "Technical team should actually escalate this urgently",
+      "Provide account credit as goodwill gesture",
+      "Assign dedicated support person for follow-up"
+    ]
+  },
+  
+  "sentiment_timeline": {
+    "start": "frustrated but hopeful",
+    "middle": "angry and unheard",
+    "end": "hostile and ready to leave"
+  }
 }
-```
 ```
 ## 🛠 Technology Stack
 
