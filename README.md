@@ -64,10 +64,11 @@ Alex: I'm still waiting. No one has contacted me. This is unacceptable. I'm a pa
 [No response from support]
 
 Alex: I'm going to post about this on social media. This is the worst customer service I've experienced. I'm considering canceling my subscription.
-
----
 End of Transcript
+---
+
 ### Output: Analysis Report
+json
 {
   "ticket_id": "12345",
   "analysis_summary": {
