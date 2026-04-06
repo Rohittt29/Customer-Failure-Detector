@@ -68,7 +68,7 @@ End of Transcript
 ---
 
 ### Output: Analysis Report
-json
+```python
 {
   "ticket_id": "12345",
   "analysis_summary": {
