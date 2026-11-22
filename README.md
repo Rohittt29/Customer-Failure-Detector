@@ -1,6 +1,6 @@
 # Customer Failure Detector
 
-A Streamlit app for reviewing customer support conversations with Gemini. Paste a transcript to get a likely failure point and root cause, customer emotion, a suggested response, recommended next actions, supporting transcript excerpts, and a 0–10 quality assessment. Excerpts are checked for exact matches in the submitted transcript; a missing excerpt is shown when none can be verified. A matching quote does not guarantee the interpretation is correct. Results can be downloaded as JSON.
+A Streamlit app for reviewing customer support conversations with Gemini. Paste a transcript to get a likely failure point and root cause, customer emotion, a suggested response, recommended next actions, supporting transcript excerpts, and a 0–10 quality assessment. Excerpts are checked for exact matches in the submitted transcript; a missing excerpt is shown when none can be verified. A matching quote does not guarantee the interpretation is correct. Reviewers can mark the analysis as confirmed or needing correction, add notes, and download the analysis and review together as JSON. Review notes stay in the current session and reset when a new analysis is started.
 
 ## Run locally
 
