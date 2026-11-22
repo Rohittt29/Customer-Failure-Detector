@@ -57,10 +57,14 @@ with left:
         if col.button(label, use_container_width=True):
             st.session_state.conversation = sample
             st.session_state.analysis = None
+            st.session_state.pop("review_verdict", None)
+            st.session_state.pop("review_notes", None)
     conversation = st.text_area("Support transcript", key="conversation", height=300, max_chars=MAX_CONVERSATION_CHARS, placeholder="Agent: How can I help?\nCustomer: I'm having trouble with…", help="Include both sides of the conversation for the best context.")
     st.caption(f"{len(conversation):,} / {MAX_CONVERSATION_CHARS:,} characters")
     if st.button("Analyze conversation →", type="primary", use_container_width=True):
         st.session_state.analysis = None
+        st.session_state.pop("review_verdict", None)
+        st.session_state.pop("review_notes", None)
         try:
             with st.spinner("Reviewing the conversation…"):
                 result = analyze_conversation(api_key or env_key, conversation)
@@ -100,7 +104,13 @@ with right:
         for index, action in enumerate(result["next_actions"], 1):
             st.write(f"{index}. {action}")
         st.caption("Excerpts are matched against the transcript; review whether they support each finding.")
-        st.download_button("Download analysis as JSON", json.dumps(result, indent=2, ensure_ascii=False), file_name="customer-analysis.json", mime="application/json", use_container_width=True)
+        st.divider()
+        st.markdown("#### Reviewer assessment")
+        st.caption("Record your decision and any corrections. Your review is included in the downloaded report.")
+        verdict = st.selectbox("Review status", ["Not reviewed", "Confirmed", "Needs correction"], key="review_verdict")
+        notes = st.text_area("Reviewer notes and corrections", key="review_notes", max_chars=5000, placeholder="Add context, corrections, or a reason for your decision…")
+        report = {**result, "review": {"status": verdict, "notes": notes.strip()}}
+        st.download_button("Download analysis as JSON", json.dumps(report, indent=2, ensure_ascii=False), file_name="customer-analysis.json", mime="application/json", use_container_width=True, disabled=conversation != st.session_state.get("analyzed_conversation"), help="Reanalyze the current transcript before downloading." if conversation != st.session_state.get("analyzed_conversation") else None)
     else:
         st.info("Your analysis will appear here after you submit a conversation.")
         st.markdown("**What you’ll get**")
