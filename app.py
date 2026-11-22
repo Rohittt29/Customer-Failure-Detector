@@ -10,23 +10,41 @@ load_dotenv()
 st.set_page_config(page_title="Customer Failure Detector", page_icon="◈", layout="wide")
 
 SAMPLES = {
-    "Lost package": "Agent: Thank you for calling TechBox support. How can I help?\nCustomer: I ordered a package two weeks ago and it still hasn't arrived.\nAgent: It looks like it was lost in transit. You'll need to contact the courier to file a claim.\nCustomer: Can't you do that? I bought it from you!\nAgent: Once it leaves our warehouse, it's out of our hands.\nCustomer: This is ridiculous. Cancel my account.",
-    "Service outage": "Agent: Welcome to CloudHost. How may I assist?\nCustomer: My website has been down for three hours. I'm losing sales.\nAgent: There's an outage. It will be fixed soon.\nCustomer: I need a timeframe. Can you migrate me to another server?\nAgent: That's a premium feature. You have to wait.\nCustomer: We're losing thousands.\nAgent: Those are our policies. Have a good day.",
-    "Billing dispute": "Agent: Hi, this is Billing Support.\nCustomer: I was charged $150 instead of my usual $50.\nAgent: You were switched to the Annual Pro plan.\nCustomer: I didn't authorize that!\nAgent: You must have clicked upgrade. It's non-refundable.\nCustomer: I haven't even logged in this month. I want a manager.",
+    "Package": "Agent: Thank you for calling TechBox support. How can I help?\nCustomer: I ordered a package two weeks ago and it still hasn't arrived.\nAgent: It looks like it was lost in transit. You'll need to contact the courier to file a claim.\nCustomer: Can't you do that? I bought it from you!\nAgent: Once it leaves our warehouse, it's out of our hands.\nCustomer: This is ridiculous. Cancel my account.",
+    "Outage": "Agent: Welcome to CloudHost. How may I assist?\nCustomer: My website has been down for three hours. I'm losing sales.\nAgent: There's an outage. It will be fixed soon.\nCustomer: I need a timeframe. Can you migrate me to another server?\nAgent: That's a premium feature. You have to wait.\nCustomer: We're losing thousands.\nAgent: Those are our policies. Have a good day.",
+    "Billing": "Agent: Hi, this is Billing Support.\nCustomer: I was charged $150 instead of my usual $50.\nAgent: You were switched to the Annual Pro plan.\nCustomer: I didn't authorize that!\nAgent: You must have clicked upgrade. It's non-refundable.\nCustomer: I haven't even logged in this month. I want a manager.",
 }
 
 st.markdown("""
 <style>
-.stApp {background: #f6f7f4; color: #172b29;}
-.block-container {max-width: 1200px; padding-top: 2rem; padding-bottom: 3rem;}
-.eyebrow {color:#547d71; font-size:.75rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;}
-.hero {padding: 1.5rem 0 .8rem;}
-.hero h1 {font-size:clamp(2.1rem, 4vw, 3.5rem); letter-spacing:-.045em; line-height:1.08; margin:.5rem 0; color:#183c35;}
-.hero p {color:#5a6d67; font-size:1.05rem; max-width:650px; line-height:1.6;}
-div[data-testid="stMetric"] {background:#e7f1ec; border:1px solid #cde1d6; border-radius:14px; padding:1rem 1.2rem;}
-div.stButton > button[kind="primary"] {background:#1d594b; border-color:#1d594b; color:white;}
-div.stButton > button {border-radius:8px;}
-.small-note {color:#657a72; font-size:.85rem;}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap');
+.stApp {background: #f4f6f4; color: #152b29; font-family: 'DM Sans', sans-serif;}
+h1, h2, h3, h4, [data-testid="stMetricValue"] {font-family: 'Manrope', sans-serif; letter-spacing: -.035em;}
+.block-container {max-width: 1440px; padding: 2rem 3rem 5rem;}
+[data-testid="stSidebar"] {background: #102e2c; border: 0;}
+[data-testid="stSidebar"] * {color: #eef8f2;}
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {color: #d1e2da !important; line-height: 1.6;}
+[data-testid="stSidebar"] input {color: #173b36; background: #fff;}
+[data-testid="stSidebar"] hr {border-color: #31534c;}
+.brand {display:flex; align-items:center; gap:12px; margin-bottom:2.5rem;}
+.brand-mark {background:#c9f36d; color:#15372f !important; border-radius:12px; height:42px; width:42px; display:grid; place-items:center; font-size:24px; font-weight:800;}
+.brand-name {font-family:Manrope,sans-serif; font-weight:800; letter-spacing:-.04em; font-size:1.05rem; line-height:1.15;}
+.brand-sub {font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:#a8c5b8 !important; margin-top:4px;}
+.eyebrow {color:#78aa99; font-size:.72rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;}
+.hero {padding: .7rem 0 1.6rem;}
+.hero h1 {font-size:clamp(2.2rem, 4vw, 3.7rem); line-height:1.06; letter-spacing:-.055em; margin:.65rem 0 .8rem; color:#173b35;}
+.hero p {color:#657c75; font-size:1.05rem; line-height:1.6; max-width:650px; margin:0;}
+.hero-pill {display:inline-block; background:#e3efe8; border:1px solid #d1e4d8; border-radius:99px; padding:.42rem .8rem; color:#356f5d; font-size:.7rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;}
+[data-testid="stVerticalBlockBorderWrapper"] > div {background:#fff; border:1px solid #e1e9e3; border-radius:18px; box-shadow:0 12px 36px rgba(23,59,53,.045); padding:1.5rem;}
+[data-testid="stMetric"] {background:#eaf5ed; border:1px solid #d4e9da; border-radius:14px; padding:1.1rem 1.25rem;}
+[data-testid="stMetricValue"] {color:#1d594b;}
+div.stButton > button {border-radius:10px; font-weight:600; min-height:2.65rem; border-color:#dce7de; color:#244a3e;}
+div.stButton > button[kind="primary"] {background:#1c594a; border:1px solid #1c594a; color:#fff; min-height:3rem;}
+div.stButton > button[kind="primary"]:hover {background:#123e35; border-color:#123e35; color:#fff;}
+textarea {border-radius:12px !important;}
+[data-testid="stCodeBlock"] pre {border-radius:10px;}
+.section-kicker {color:#6d8e81; font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.4rem;}
+@media (max-width: 768px) {.block-container {padding:1rem 1rem 3rem;} .hero h1 {font-size:2.35rem;}}
 </style>
 """, unsafe_allow_html=True)
 
@@ -36,8 +54,9 @@ if "analysis" not in st.session_state:
     st.session_state.analysis = None
 
 with st.sidebar:
-    st.markdown('<div class="eyebrow">Workspace</div>', unsafe_allow_html=True)
-    st.header("Analysis settings")
+    st.markdown('<div class="brand"><div class="brand-mark">◈</div><div><div class="brand-name">Customer Failure Detector</div><div class="brand-sub">Quality workspace</div></div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="eyebrow">Workspace settings</div>', unsafe_allow_html=True)
+    st.subheader("Your connection")
     env_key = os.getenv("GEMINI_API_KEY", "")
     api_key = st.text_input("Gemini API key", type="password", help="Used for this session. Alternatively set GEMINI_API_KEY in your environment.")
     st.caption("An environment key is configured." if env_key else "Get a key from Google AI Studio, or configure GEMINI_API_KEY.")
@@ -46,12 +65,13 @@ with st.sidebar:
     st.caption("Remove personal or sensitive information before submitting. The transcript is sent to Google Gemini for analysis.")
     st.caption("AI assessments can be incomplete or mistaken. Review the transcript before acting.")
 
-st.markdown('<div class="hero"><div class="eyebrow">Customer experience · Quality review</div><h1>Find the moment<br>things went wrong.</h1><p>Turn support conversations into clear insights and a more thoughtful next response.</p></div>', unsafe_allow_html=True)
+st.markdown('<div class="hero"><span class="hero-pill">✦ &nbsp; Customer experience intelligence</span><h1>Better conversations<br>start with clarity.</h1><p>Find the moments that matter, understand what went wrong, and give your team a better way forward.</p></div>', unsafe_allow_html=True)
 
 left, right = st.columns([1.05, 1], gap="large")
-with left:
-    st.subheader("Conversation")
-    st.caption("Paste a support exchange or start with an example.")
+with left, st.container(border=True):
+    st.markdown('<div class="section-kicker">01 / Input</div>', unsafe_allow_html=True)
+    st.subheader("The conversation")
+    st.caption("Paste a transcript below, or explore an example to get started.")
     sample_cols = st.columns(3)
     for col, (label, sample) in zip(sample_cols, SAMPLES.items()):
         if col.button(label, use_container_width=True):
@@ -73,8 +93,9 @@ with left:
         except AnalysisError as exc:
             st.error(str(exc))
 
-with right:
-    st.subheader("Analysis")
+with right, st.container(border=True):
+    st.markdown('<div class="section-kicker">02 / Insights</div>', unsafe_allow_html=True)
+    st.subheader("Your analysis")
     result = st.session_state.analysis
     if result:
         def show_evidence(finding):
@@ -112,6 +133,12 @@ with right:
         report = {**result, "review": {"status": verdict, "notes": notes.strip()}}
         st.download_button("Download analysis as JSON", json.dumps(report, indent=2, ensure_ascii=False), file_name="customer-analysis.json", mime="application/json", use_container_width=True, disabled=conversation != st.session_state.get("analyzed_conversation"), help="Reanalyze the current transcript before downloading." if conversation != st.session_state.get("analyzed_conversation") else None)
     else:
-        st.info("Your analysis will appear here after you submit a conversation.")
-        st.markdown("**What you’ll get**")
-        st.write("A failure point, likely root cause, customer emotion, supporting excerpts, suggested response, next actions, and an overall quality score.")
+        st.markdown("### Your next insight starts here")
+        st.caption("Add a conversation and run an analysis to uncover the details behind the customer experience.")
+        st.divider()
+        st.markdown("**01  ·  Pinpoint the moment**")
+        st.caption("Identify the failure point and the evidence behind it.")
+        st.markdown("**02  ·  Understand the why**")
+        st.caption("Explore likely causes and the customer’s emotional state.")
+        st.markdown("**03  ·  Move forward**")
+        st.caption("Get a suggested response and practical next actions.")
