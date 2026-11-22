@@ -18,13 +18,13 @@ SAMPLES = {
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap');
-.stApp {background: #f4f6f4; color: #152b29; font-family: 'DM Sans', sans-serif;}
+.stApp {background: #0c1918; color: #edf6ef; font-family: 'DM Sans', sans-serif;}
 h1, h2, h3, h4, [data-testid="stMetricValue"] {font-family: 'Manrope', sans-serif; letter-spacing: -.035em;}
 .block-container {max-width: 1440px; padding: 2rem 3rem 5rem;}
-[data-testid="stSidebar"] {background: #102e2c; border: 0;}
+[data-testid="stSidebar"] {background: #10221f; border: 0;}
 [data-testid="stSidebar"] * {color: #eef8f2;}
 [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {color: #d1e2da !important; line-height: 1.6;}
-[data-testid="stSidebar"] input {color: #173b36; background: #fff;}
+[data-testid="stSidebar"] input {color: #edf6ef; background: #203834;}
 [data-testid="stSidebar"] hr {border-color: #31534c;}
 .brand {display:flex; align-items:center; gap:12px; margin-bottom:2.5rem;}
 .brand-mark {background:#c9f36d; color:#15372f !important; border-radius:12px; height:42px; width:42px; display:grid; place-items:center; font-size:24px; font-weight:800;}
@@ -32,18 +32,18 @@ h1, h2, h3, h4, [data-testid="stMetricValue"] {font-family: 'Manrope', sans-seri
 .brand-sub {font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:#a8c5b8 !important; margin-top:4px;}
 .eyebrow {color:#78aa99; font-size:.72rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;}
 .hero {padding: .7rem 0 1.6rem;}
-.hero h1 {font-size:clamp(2.2rem, 4vw, 3.7rem); line-height:1.06; letter-spacing:-.055em; margin:.65rem 0 .8rem; color:#173b35;}
-.hero p {color:#657c75; font-size:1.05rem; line-height:1.6; max-width:650px; margin:0;}
-.hero-pill {display:inline-block; background:#e3efe8; border:1px solid #d1e4d8; border-radius:99px; padding:.42rem .8rem; color:#356f5d; font-size:.7rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;}
-[data-testid="stVerticalBlockBorderWrapper"] > div {background:#fff; border:1px solid #e1e9e3; border-radius:18px; box-shadow:0 12px 36px rgba(23,59,53,.045); padding:1.5rem;}
-[data-testid="stMetric"] {background:#eaf5ed; border:1px solid #d4e9da; border-radius:14px; padding:1.1rem 1.25rem;}
-[data-testid="stMetricValue"] {color:#1d594b;}
-div.stButton > button {border-radius:10px; font-weight:600; min-height:2.65rem; border-color:#dce7de; color:#244a3e;}
-div.stButton > button[kind="primary"] {background:#1c594a; border:1px solid #1c594a; color:#fff; min-height:3rem;}
-div.stButton > button[kind="primary"]:hover {background:#123e35; border-color:#123e35; color:#fff;}
+.hero h1 {font-size:clamp(2.2rem, 4vw, 3.7rem); line-height:1.06; letter-spacing:-.055em; margin:.65rem 0 .8rem; color:#f1f8f2;}
+.hero p {color:#bbcec4; font-size:1.05rem; line-height:1.6; max-width:650px; margin:0;}
+.hero-pill {display:inline-block; background:#203a32; border:1px solid #35574a; border-radius:99px; padding:.42rem .8rem; color:#c9edbf; font-size:.7rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;}
+[data-testid="stVerticalBlockBorderWrapper"] > div {background:#172b28; border:1px solid #315047; border-radius:18px; box-shadow:0 12px 36px rgba(0,0,0,.18); padding:1.5rem;}
+[data-testid="stMetric"] {background:#203e33; border:1px solid #395c4a; border-radius:14px; padding:1.1rem 1.25rem;}
+[data-testid="stMetricValue"] {color:#d0f5b7;}
+div.stButton > button {border-radius:10px; font-weight:600; min-height:2.65rem; background:#203834; border-color:#466359; color:#edf6ef;}
+div.stButton > button[kind="primary"] {background:#b9ed76; border:1px solid #b9ed76; color:#10291f; min-height:3rem;}
+div.stButton > button[kind="primary"]:hover {background:#d1f69d; border-color:#d1f69d; color:#10291f;}
 textarea {border-radius:12px !important;}
 [data-testid="stCodeBlock"] pre {border-radius:10px;}
-.section-kicker {color:#6d8e81; font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.4rem;}
+.section-kicker {color:#a7cdb8; font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.4rem;}
 @media (max-width: 768px) {.block-container {padding:1rem 1rem 3rem;} .hero h1 {font-size:2.35rem;}}
 </style>
 """, unsafe_allow_html=True)
